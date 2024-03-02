@@ -1,8 +1,8 @@
 import './MovieCard.css';
 
-export default function MovieCard({Title,Type,Year,Poster}) {
+export default function MovieCard({Title,Type,Year,Poster,onHandleClick}) {
   return (
-    <div className='movie-wrapper'>
+    <div className='movie-wrapper' onClick={onHandleClick}>
       <div className="movie-image">
         <img src={Poster} alt="poster image.." />
       </div>
