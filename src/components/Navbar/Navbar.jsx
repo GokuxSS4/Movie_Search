@@ -1,25 +1,33 @@
-import { useRef } from "react";
+import { useState } from "react";
+import useMovieList from "../../hooks/useMovieList";
+import useDebounce from "../../hooks/useDebounce";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const resultRef = useRef(null);
+  const [isListVisibile,setIsListVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const { movieList } = useMovieList(searchTerm ? searchTerm : 'avengers');
   return (
     <div className="navbar-wrapper">
-      <div className='logo'>MovieHub</div>
+      <div className="logo">MovieHub</div>
       <div className="search">
         <input
           type="text"
-          onFocus={() => (resultRef.current.style.display = "block")}
-          onBlur={() => (resultRef.current.style.display = "none")}
+          onFocus={() =>setIsListVisible(true)}
+          onBlur={() => setIsListVisible(false)}
+          onChange={useDebounce((e)=>setSearchTerm(e.target.value))}
         />
-        <div className="result-list" ref={resultRef}>
-          <div className="result">Result1</div>
-          <div className="result">Result2</div>
-          <div className="result">Result3</div>
+        <div className={`result-list  ${isListVisibile ? 'visible':'not-visible'}`}>
+           {movieList.length > 0 &&
+            movieList.slice(0, 5).map((result)=> (
+              <div className="result" key={result.imdbID}>
+                {result.Title}
+              </div>
+            ))}
         </div>
       </div>
 
-      <div className='theme'>Theme</div>
+      <div className="theme">Theme</div>
     </div>
   );
 }
