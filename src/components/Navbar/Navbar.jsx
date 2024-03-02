@@ -2,11 +2,18 @@ import { useState } from "react";
 import useMovieList from "../../hooks/useMovieList";
 import useDebounce from "../../hooks/useDebounce";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isListVisibile,setIsListVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { movieList } = useMovieList(searchTerm ? searchTerm : 'avengers');
+  const navigator = useNavigate();
+
+  function handleClick(e,id){
+    navigator(`/movie/${id}`);  
+  }
+
   return (
     <div className="navbar-wrapper">
       <div className="logo">MovieHub</div>
@@ -20,7 +27,7 @@ export default function Navbar() {
         <div className={`result-list  ${isListVisibile ? 'visible':'not-visible'}`}>
            {movieList.length > 0 &&
             movieList.slice(0, 5).map((result)=> (
-              <div className="result" key={result.imdbID}>
+              <div className="result" key={result.imdbID} onMouseDown={(e)=>handleClick(e,result.imdbID)}>
                 {result.Title}
               </div>
             ))}
