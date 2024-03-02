@@ -9,16 +9,17 @@
 
 }
 
-.navbar-wrapper div:nth-child(1) {
+.logo {
     font-size: xx-large;
     letter-spacing: 15px;
 }
 
-.navbar-wrapper div:nth-child(2) {
+.search {
     flex-basis: 65%;
+    position: relative;
 }
 
-.navbar-wrapper div:nth-child(2) input {
+.search input {
     width: 100%;
     height: 25px;
     padding: 10px;
@@ -26,4 +27,18 @@
     border: none;
     border-radius: 5px;
     color: white;
+}
+
+.result-list{
+    position:absolute;
+    background-color: white;
+    width: 100%;
+}
+
+.result-list > .result{
+    color: black;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: medium;
 }

@@ -8,8 +8,6 @@ export default function Home() {
   const [movieList, setMovieList] = useState([]);
 
   async function downloadDefaultData(...args) {
-
-    console.log(args);
     const urls= args.map((arg)=>searchMovie(arg));
     const response = await axios.all(urls.map((url)=>axios.get(url)));
     const results = response.map((item)=>item.data.Search);
