@@ -1,0 +1,17 @@
+:root {
+    /* Dark mode */
+    --prime-blue: #00a0d6;
+    --dull-blue: #364f65;
+    --dark-blue: #191e26;
+    --card-background: whitesmoke;
+    --font-color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+  
+#app-wrapper {
+    background-color: var(--dark-blue);
+  }
