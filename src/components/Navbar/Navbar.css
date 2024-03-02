@@ -44,10 +44,23 @@
     cursor: pointer;
 }
 
+.theme-icon {
+    font-size: x-large;
+    cursor: pointer;
+}
 .visible{
     display: block;
 }
 
 .not-visible{
     display: none;
+}
+
+.logo> a {
+    color: white;
+    text-decoration: none;
+}
+
+.result:hover {
+    background-color:gainsboro;
 }
